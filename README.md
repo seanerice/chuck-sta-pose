@@ -1,31 +1,28 @@
 # ChucK-sta-pose
 The audio component of my final project for Music and Tech 1.
 
-## Concept
+# Concept
 Control a musical piece with gesture control. 
 
 I will leverage existing tech solutions to design a multifaceted, neural-network-driven system which allows the user to conduct a musical piece with nothing more than a laptop and a webcam.
 
-## Execution
+# Execution
 There are three discrete components required to achieve the goal.
 
 1. Audio backend
     * ChucK audio engine
-    * OSC input
     * Use gesture classification and params to control piece
 2. Pose tracking software
-    * https://github.com/tommymitch/posenetosc
-    * Sends pose data over OSC
+    * https://github.com/tommymitch/posenetosc (based on TF PoseNet implementation)
+    * Stream bone pose data out over OSC
+    * Preprocess data
 3. Gesture classifier
-    * Use Wekinator "dynamic time warp" model, perfect for sequence classification.
-    * Train several poses
-    * Stream pose data for on-the-fly gesture classification.
-    * Utilize second model to parameterize poses (i.e. arm is raised 75%)
-    * Native OSC input/output
+    * Multi-class gesture classifier
+    * Classify sequences of pose data
    
-## Install
-1. Pull this repo.
-2. Pull the repo https://github.com/tommymitch/posenetosc
+# Install
+1. Clone this repo.
+2. Clone the repo https://github.com/tommymitch/posenetosc
    * Move the `osc.send(message)` on line 300 to line 301 so it is after the `}`. This ensures the message is sent correctly.
    
 ## Run
@@ -34,19 +31,7 @@ There are three discrete components required to achieve the goal.
 3. Run `yarn watch` in the `posenetosc` repo. This will open up a window in your browser.
 4. Load, train, and run the wekinator model in `/pose_parameters`.
    
-## Audio Backend
-A composed chuck piece consisting of several audio sources.
 
-There are two scripts in the audio engine:
-
-`main.ck`: 
-* Audio sources
-* OSC event listeners (note trigger, instrument params)
-    
-`composition.ck`: 
-* High-level control of audio sources
-* Several distinct sections
-* OSC event listeners (gesture data, gesture parameters)
    
 ## Gesture Classification (Failure)
 Wekinator allows me to classify multiple, complex gestures.
