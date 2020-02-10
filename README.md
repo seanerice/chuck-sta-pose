@@ -1,6 +1,3 @@
-# ChucK-sta-pose
-The audio component of my final project for Music and Tech 1.
-
 # Concept
 Control a musical piece with gesture control. 
 
@@ -30,26 +27,6 @@ There are three discrete components required to achieve the goal.
 2. Run `node bridge.js` in the `posenetosc` repo
 3. Run `yarn watch` in the `posenetosc` repo. This will open up a window in your browser.
 4. Load, train, and run the wekinator model in `/pose_parameters`.
-   
-
-   
-## Gesture Classification (Failure)
-Wekinator allows me to classify multiple, complex gestures.
-
-Some gestures are:
-
-`raise_arm`: Raise the volume of a single voice
-* Use `hand_y` parameter to control volume
-* Use some other parameter to determine which voice is selected
-
-`lower_arm`: Lower the volume of a single voice
-* Same as `raise_arm`
-
-`arms_wide`: Controll all voices simultaneously
-
-`inward_circle`: Used to note a sudden "closing" or cut-off.
-
-Note: I may use two classifiers (one for left, one for right)
 
 
 ## Pose Parameterization
