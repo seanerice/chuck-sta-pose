@@ -243,5 +243,6 @@ choir2.initOsc("/choir2");
 
 
 while(true) {
-    10::ms => now;
+    fs1.play();
+    3::second => now;
 }
